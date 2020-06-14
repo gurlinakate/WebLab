@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
+<h:head>
+    <h:outputStylesheet library="css" name="main.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;531;600;700;800;900&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,700;1,700&amp;display=swap"
+          rel="stylesheet"/>
+    <title>Library</title>
+</h:head>
+<h:body>
+    <div class="insert">
+        <h:form styleClass="insert-form">
+            <div class="insert-input-wrapper">
+                <h:outputLabel styleClass="insert-form__label label" for="name">Название
+                    <h:inputText styleClass="insert-form__input input" id="name" value="#{userBean.book.title}" validatorMessage="Введите корректное название">
+                        <f:validateRequired/>
+                    </h:inputText>
+                </h:outputLabel>
+                <h:outputLabel styleClass="insert-form__label label" for="year">Дата публикации
+                    <h:inputText styleClass="insert-form__input input" id="year" value="#{userBean.book.year}" validatorMessage="Введите год публикации">
+                        <f:validateRequired/>
+                        <f:validateDoubleRange minimum="0.001" maximum="10000"/>
+                    </h:inputText>
+                </h:outputLabel>
+                <h:outputLabel styleClass="insert-form__label label" for="page">Количество страниц
+                    <h:inputText styleClass="insert-form__input input" id="page" value="#{userBean.book.page}" validatorMessage="Введите колличество страниц">
+                        <f:validateRequired/>
+                        <f:validateDoubleRange minimum="0.001" maximum="10000"/>
+                    </h:inputText>
+                </h:outputLabel>
+                <h:outputLabel styleClass="insert-form__label label" for="price">Цена
+                    <h:inputText styleClass="insert-form__input input" id="price" value="#{userBean.book.price}" validatorMessage="Введите цену">
+                        <f:validateRequired/>
+                        <f:validateDoubleRange minimum="0.001" maximum="10000"/>
+                    </h:inputText>
+                </h:outputLabel>
+            </div>
+            <h:commandButton action="#{userBean.insertAndGoToResultPage}"
+                             value="Добавить"
+                             styleClass="insert-form__button button"/>
+        </h:form>
+        <h:messages styleClass="insert-error"/>
+    </div>
+</h:body>
+</html>
